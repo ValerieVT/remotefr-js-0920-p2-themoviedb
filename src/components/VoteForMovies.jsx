@@ -42,7 +42,7 @@ class VoteForMovies extends React.Component {
           <h2 className="maselection"> Ma sélection </h2>
           <div className="candidate">
             {like.map((liked) => (
-              <cards className="filmselec">
+              <article className="filmselec">
                 <img
                   alt="Cover"
                   className="cover"
@@ -79,7 +79,7 @@ class VoteForMovies extends React.Component {
                 >
                   Détails
                 </button>
-              </cards>
+              </article>
             ))}
             <Modal
               isOpen={!!zoomFilm}

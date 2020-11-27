@@ -34,7 +34,7 @@ class FilmZoom extends React.Component {
     const { streaming } = this.state;
 
     return (
-      <cards className="moreinfo">
+      <article className="moreinfo">
         <h3 className="leTitre">
           <span className="titre">{titre}</span>
           <Rating
@@ -65,7 +65,7 @@ class FilmZoom extends React.Component {
                 href={linkToMovieForKids}
                 title="Filmspourenfants.net"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 <button type="button" className="btnFilmsPourEnfants">
                   Filmspourenfants.net
@@ -123,7 +123,7 @@ class FilmZoom extends React.Component {
             src={`https://image.tmdb.org/t/p/w440_and_h660_face${poster}`}
           />
         </article>
-      </cards>
+      </article>
     );
   }
 }

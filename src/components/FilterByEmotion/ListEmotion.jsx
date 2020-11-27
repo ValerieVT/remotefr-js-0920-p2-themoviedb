@@ -34,6 +34,26 @@ function ListEmotion(props) {
   );
 }
 
+ListEmotion.defaultProps = {
+  data: {
+    Friends: {
+      name: '',
+      list_genres_name: [],
+    },
+    Family: {
+      name: '',
+      list_genres_name: [],
+    },
+    Couple: {
+      name: '',
+      list_genres_name: [],
+    },
+    Alone: {
+      name: '',
+      list_genres_name: [],
+    },
+  },
+};
 ListEmotion.propTypes = {
   data: PropTypes.shape(
     PropTypes.shape({
@@ -44,7 +64,7 @@ ListEmotion.propTypes = {
         tv_genres_ids: PropTypes.arrayOf(PropTypes.number),
       }),
     }),
-  ).isRequired,
+  ),
   match: PropTypes.shape({
     path: PropTypes.string,
     url: PropTypes.string,

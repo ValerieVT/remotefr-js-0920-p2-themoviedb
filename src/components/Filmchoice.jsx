@@ -164,7 +164,7 @@ class Filmchoice extends React.Component {
           <h2 className={choosenOne}> Ma sélection </h2>
           <div className="theOne">
             {like.map((liked) => (
-              <cards className="filmview">
+              <article className="filmview">
                 <button
                   type="button"
                   className="more"
@@ -208,7 +208,7 @@ class Filmchoice extends React.Component {
                 >
                   ✂
                 </button>
-              </cards>
+              </article>
             ))}
 
             <Modal

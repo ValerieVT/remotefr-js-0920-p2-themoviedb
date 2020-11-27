@@ -17,14 +17,6 @@ function SelectionByAge(props) {
 
   // get the list of movies from the API by age
   const [MovieListForAge, setMovieListForAge] = useState([]);
-  const getMovieListForAge = () => {
-    axios
-      .get(`https://movieages.herokuapp.com/movies?ageFrom=${age}`)
-      .then((response) => response.data)
-      .then((data) => {
-        setMovieListForAge(data);
-      });
-  };
 
   // get the following 20 results
   const [firstResult, setFirstResulte] = useState(0);
@@ -36,16 +28,21 @@ function SelectionByAge(props) {
 
   // filter to get 20 results
   const [arrayDataFilter, setArrayDataFilter] = useState([]);
-  const filterArrayData = () => {
-    setArrayDataFilter(MovieListForAge.slice(firstResult, lastResult));
-  };
 
   useEffect(() => {
+    const getMovieListForAge = () => {
+      axios
+        .get(`https://movieages.herokuapp.com/movies?ageFrom=${age}`)
+        .then((response) => response.data)
+        .then((data) => {
+          setMovieListForAge(data);
+        });
+    };
     getMovieListForAge();
-  }, []);
+  }, [age]);
 
   useEffect(() => {
-    filterArrayData();
+    setArrayDataFilter(MovieListForAge.slice(firstResult, lastResult));
   }, [firstResult, lastResult, MovieListForAge]);
 
   return (
