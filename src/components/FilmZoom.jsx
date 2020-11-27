@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Rating from 'react-rating';
 import axios from 'axios';
-import apiKey from './apiKey';
 
 class FilmZoom extends React.Component {
   constructor(props) {
@@ -16,7 +15,7 @@ class FilmZoom extends React.Component {
     const { id } = this.props;
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${apiKey}`,
+        `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${process.env.REACT_APP_KEY}`,
       )
       .then((response) => response.data)
       .then((data) => {

@@ -3,7 +3,6 @@ import './Filmchoice.css';
 import axios from 'axios';
 import Rating from 'react-rating';
 import Modal from 'react-modal';
-import apiKey from './apiKey';
 import FilmZoom from './FilmZoom';
 import SendMovies from './SendMovies';
 import styles from './SendMovies.module.css';
@@ -65,7 +64,7 @@ class Filmchoice extends React.Component {
     event.preventDefault();
     this.setState({ clicked: 'view' });
     const { value } = this.state;
-    const url = `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=fr&query=${value}&page=1&include_adult=false`;
+    const url = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_KEY}&language=fr&query=${value}&page=1&include_adult=false`;
 
     axios
       .get(url)

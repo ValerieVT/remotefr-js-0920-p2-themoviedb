@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Nouveautes from './Nouveautes';
 import MySelectionOfMoviesList from './filterByGenre/MySelectionOfMoviesList';
 import styles from './NouveautesList.module.css';
-import apiKey from './apiKey';
 
 class NouveautesList extends React.Component {
   constructor(props) {
@@ -39,7 +38,7 @@ class NouveautesList extends React.Component {
     const todayFullDate = `${todayYear00}-${todayMonth00}-${todayDate00}`;
     const pastFullDate = `${pastYear00}-${pastMonth00}-${todayDate00}`;
 
-    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.gte=${pastFullDate}&release_date.lte=${todayFullDate}`;
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.gte=${pastFullDate}&release_date.lte=${todayFullDate}`;
     axios
       .get(url)
       .then((response) => response.data.results)
@@ -75,7 +74,7 @@ class NouveautesList extends React.Component {
     this.setState({
       titleGenre: `Les nouveautés pour inspirer ma soirée ${click.target.innerText} :`,
     });
-    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.gte=${pastFullDate}&release_date.lte=${todayFullDate}${genreMovies}`;
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.gte=${pastFullDate}&release_date.lte=${todayFullDate}${genreMovies}`;
     axios
       .get(url)
       .then((response) => response.data.results)

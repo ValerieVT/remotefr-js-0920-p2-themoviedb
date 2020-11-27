@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import apiKey from '../apiKey';
 import GenreList from './GenreList';
 import SelectUserList from './SelectUserList';
 import MovieGenreDetail from '../../Data/MovieGenreDetail';
@@ -63,7 +62,7 @@ function FilterByGenre(props) {
 
       axios
         .get(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&${filterGenre}&with_runtime.lte=${runtime}&with_original_language=fr`,
+          `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&${filterGenre}&with_runtime.lte=${runtime}&with_original_language=fr`,
         )
         .then((response) => response.data)
         .then((data) => {
@@ -104,7 +103,7 @@ function FilterByGenre(props) {
 
       axios
         .get(
-          `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=fr-FR&sort_by=popularity.desc&page=${page}&${filterGenre}&&with_runtime.lte=${runtime}&include_null_first_air_dates=false&with_original_language=fr`,
+          `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_KEY}&language=fr-FR&sort_by=popularity.desc&page=${page}&${filterGenre}&&with_runtime.lte=${runtime}&include_null_first_air_dates=false&with_original_language=fr`,
         )
         .then((response) => response.data)
         .then((data) => {
