@@ -31,7 +31,7 @@ class NouveautesList extends React.Component {
       pastMonth00 = (todayMonth00 - 6).toString().padStart(2, '0');
       pastYear00 = todayYear00;
     } else {
-      pastMonth00 = parseInt(todayMonth, 16) + 6;
+      pastMonth00 = (parseInt(todayMonth, 12) + 6).toString().padStart(2, '0');
       pastYear00 = todayYear00 - 1;
     }
 
@@ -62,7 +62,7 @@ class NouveautesList extends React.Component {
       pastMonth00 = (todayMonth00 - 6).toString().padStart(2, '0');
       pastYear00 = todayYear00;
     } else {
-      pastMonth00 = parseInt(todayMonth, 12) + 6;
+      pastMonth00 = (parseInt(todayMonth, 12) + 6).toString().padStart(2, '0');
       pastYear00 = todayYear00 - 1;
     }
 
@@ -75,6 +75,7 @@ class NouveautesList extends React.Component {
       titleGenre: `Les nouveautés pour inspirer ma soirée ${click.target.innerText} :`,
     });
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.gte=${pastFullDate}&release_date.lte=${todayFullDate}${genreMovies}`;
+    console.log(pastFullDate);
     axios
       .get(url)
       .then((response) => response.data.results)
